@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\DBRELACIONV2.props" />
+</Project>
