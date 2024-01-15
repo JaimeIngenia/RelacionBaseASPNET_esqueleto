@@ -63,3 +63,9 @@ C:\Users\ASUS\source\repos\DBRELACIONV2\DBRELACIONV2\obj\Debug\net6.0\refint\DBR
 C:\Users\ASUS\source\repos\DBRELACIONV2\DBRELACIONV2\obj\Debug\net6.0\DBRELACIONV2.pdb
 C:\Users\ASUS\source\repos\DBRELACIONV2\DBRELACIONV2\obj\Debug\net6.0\DBRELACIONV2.genruntimeconfig.cache
 C:\Users\ASUS\source\repos\DBRELACIONV2\DBRELACIONV2\obj\Debug\net6.0\ref\DBRELACIONV2.dll
+C:\Users\ASUS\source\repos\DBRELACIONV2\DBRELACIONV2\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\ASUS\source\repos\DBRELACIONV2\DBRELACIONV2\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\ASUS\source\repos\DBRELACIONV2\DBRELACIONV2\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\ASUS\source\repos\DBRELACIONV2\DBRELACIONV2\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\ASUS\source\repos\DBRELACIONV2\DBRELACIONV2\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\ASUS\source\repos\DBRELACIONV2\DBRELACIONV2\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll

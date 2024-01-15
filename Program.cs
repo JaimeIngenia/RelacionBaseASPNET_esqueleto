@@ -1,11 +1,17 @@
 using DBRELACIONV2.Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//builder.Services.AddControllers()AddNewtonsoftJson();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+//builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DBRELACIONContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))

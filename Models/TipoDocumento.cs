@@ -11,6 +11,6 @@ namespace DBRELACIONV2.Models
 
 
 
-        public ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();  // Navigation property
+        public ICollection<Usuario> Usuarios { get; set; }   // Navigation property
     }
 }

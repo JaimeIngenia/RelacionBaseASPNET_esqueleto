@@ -27,32 +27,28 @@ namespace DBRELACIONV2.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configurar la relación uno a muchos
-            modelBuilder.Entity<Usuario>(entity =>
-            {
-                entity.ToTable("USUARIO");
 
-                entity.HasKey(e => e.Id);
 
-                // Configurar la relación con TipoDocumento
-                entity.HasOne(e => e.IdTipoDocumentoNavigation)
-                    .WithMany(t => t.Usuarios)
-                    .HasForeignKey(e => e.IdTipoDocumento)
-                    .HasConstraintName("FK_Usuario_TipoDocumento");
+            //modelBuilder.Entity<Usuario>(entity =>
+            //{
+            //    entity.ToTable("USUARIO");
 
-                // Resto de las configuraciones para la entidad Usuario
-            });
+            //    entity.HasKey(e => e.Id);
 
-            modelBuilder.Entity<TipoDocumento>(entity =>
-            {
-                entity.ToTable("TIPODOCUMENTO");
+            //    entity.HasOne(e => e.IdTipoDocumentoNavigation)
+            //        .WithMany(t => t!.Usuarios)
+            //        .HasConstraintName("FK_Usuario_TipoDocumento");
+            //});
 
-                entity.HasKey(e => e.Id);
+            //modelBuilder.Entity<TipoDocumento>(entity =>
+            //{
+            //    entity.ToTable("TIPODOCUMENTO");
 
-                // Resto de las configuraciones para la entidad TipoDocumento
-            });
+            //    entity.HasKey(e => e.Id);
 
-       
+            //});
+
+
         }
 
 

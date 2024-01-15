@@ -25,44 +25,75 @@ namespace DBRELACIONV2.Controllers
         //    // Incluimos la propiedad de navegación TipoDocumento en la consulta
         //    List<Usuario> lista = await _context.Usuarios.Include(u => u.IdTipoDocumentoNavigation).ToListAsync();
 
-        //    return StatusCode(StatusCodes.Status200OK, lista);
+        //    var jsonOptions = new JsonSerializerOptions
+        //    {
+        //        ReferenceHandler = ReferenceHandler.Preserve,
+        //        WriteIndented = true, // Esta opción agrega formato con sangrías al JSON
+        //        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull, // Ignora propiedades nulas
+        //                                                                      // Puedes agregar otras configuraciones si es necesario
+        //    };
+
+        //    string jsonResult = JsonSerializer.Serialize(lista, jsonOptions);
+
+        //    return StatusCode(StatusCodes.Status200OK, jsonResult);
         //}
 
         //[HttpGet]
         //[Route("VerUsuario")]
         //public async Task<IActionResult> VerUsuario()
         //{
-        //    // Incluimos la propiedad de navegación TipoDocumento en la consulta
-        //    List<Usuario> lista = await _context.Usuarios.Include(u => u.IdTipoDocumentoNavigation).ToListAsync();
-
-        //    var jsonOptions = new JsonSerializerOptions
+        //    try
         //    {
-        //        ReferenceHandler = ReferenceHandler.Preserve,
-        //        // Puedes agregar otras configuraciones si es necesario
-        //    };
+        //        // Incluimos la propiedad de navegación TipoDocumento en la consulta
+        //        List<Usuario> lista = await _context.Usuarios.Include(u => u.IdTipoDocumentoNavigation).ToListAsync();
 
-        //    return StatusCode(StatusCodes.Status200OK, JsonSerializer.Serialize(lista, jsonOptions));
+        //        var jsonOptions = new JsonSerializerOptions
+        //        {
+        //            ReferenceHandler = ReferenceHandler.Preserve,
+        //            WriteIndented = true,
+        //            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+        //        };
+
+        //        string jsonResult = JsonSerializer.Serialize(lista, jsonOptions);
+
+        //        return StatusCode(StatusCodes.Status200OK, jsonResult);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Manejar errores según tus necesidades
+        //        return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        //    }
         //}
+
         [HttpGet]
         [Route("VerUsuario")]
         public async Task<IActionResult> VerUsuario()
         {
-            // Incluimos la propiedad de navegación TipoDocumento en la consulta
-            List<Usuario> lista = await _context.Usuarios.Include(u => u.IdTipoDocumentoNavigation).ToListAsync();
-
-            var jsonOptions = new JsonSerializerOptions
+            try
             {
-                ReferenceHandler = ReferenceHandler.Preserve,
-                WriteIndented = true, // Esta opción agrega formato con sangrías al JSON
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull, // Ignora propiedades nulas
-                                                                              // Puedes agregar otras configuraciones si es necesario
-            };
+                // Proyectar los resultados en UsuarioViewModel y TipoDocumentoViewModel
+                var lista = await _context.Usuarios
+                    .Include(u => u.IdTipoDocumentoNavigation)
+                    .Select(u => new UsuarioViewModel
+                    {
+                        Id = u.Id,
+                        Nombre = u.Nombre,
+                        IdTipoDocumentoNavigation = new TipoDocumentoViewModel
+                        {
+                            Id = u.IdTipoDocumentoNavigation.Id,
+                            Descripcion = u.IdTipoDocumentoNavigation.Descripcion
+                        }
+                    })
+                    .ToListAsync();
 
-            string jsonResult = JsonSerializer.Serialize(lista, jsonOptions);
-
-            return StatusCode(StatusCodes.Status200OK, jsonResult);
+                return StatusCode(StatusCodes.Status200OK, lista);
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores según tus necesidades
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
-
 
 
 
